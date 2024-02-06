@@ -14,7 +14,7 @@ tags:
 ## 我的成果
 
 - docker compose文件；
-    ```bash
+```bash
 cat >docker-compose.yml<<EOF
 version: '3'
     
@@ -29,11 +29,11 @@ services:
 EOF
 ```
 - 证书目录和配置目录；
-    ```bash
+```bash
 mkdir -p ngx/nginx_secrets ngx/user_conf.d
 ```
 - 配置文件样例；
-    ```bash
+```bash
 cat >user_conf.d/www1.conf<<EOF
 server {
     listen 443 ssl reuseport http2;
