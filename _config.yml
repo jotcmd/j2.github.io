@@ -4,10 +4,10 @@
 
 # Site
 title: My Hexo
-subtitle: ''
-description: ''
+subtitle: '我的阳台'
+description: '种满了花啊啊啊🌷🌷🌷'
 keywords:
-author: Jotcmd
+author: Jo.
 language: en
 timezone: ''
 
@@ -47,7 +47,7 @@ future: true
 syntax_highlighter: highlight.js
 highlight:
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: false
