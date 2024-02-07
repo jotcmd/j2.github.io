@@ -22,6 +22,6 @@ tags:
   poetry install
   poetry shell
   ```
-4. 顺利的话，专门for这个项目的，一个干净、清爽的python环境，就ok了。Enjoy！
+4. 顺利的话，一个专门for这个项目的，干净清爽的python环境，就ok了。Enjoy！
 
-如涉及cuda的项目，`virtualenvs.create`设置未`false`，poetry环境以conda的为主，1:1即可。
+如涉及cuda的项目，`virtualenvs.create`设置为`false`，poetry环境以conda的为主，一一对应即可。
