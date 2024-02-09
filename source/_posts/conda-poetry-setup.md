@@ -23,5 +23,6 @@ tags:
   poetry shell
   ```
 4. 顺利的话，一个专门for这个项目的，干净清爽的python环境，就ok了。Enjoy！
+5. 然后，和vscode联动的时候，`Command+Shift+p`-`Python-Select Interpreter`-选择代码目录-选择刚刚创建Python环境目录即可。如果不知道创建的在哪，`poetry shell && which python3`即可。
 
 如涉及cuda的项目，`virtualenvs.create`设置为`false`，poetry环境以conda的为主，一一对应即可。
