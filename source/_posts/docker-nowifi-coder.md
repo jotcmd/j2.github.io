@@ -22,8 +22,8 @@ sudo iptables -I FORWARD -s 172.31.0.0/24 -j DROP
 sudo iptables -I FORWARD -s 172.31.0.0/24 -m conntrack --ctstate ESTABLISHED,RELATED 
 
 docker network ls # 用于查看
-sudo iptables-save | grep 101 # 用于查看
-# 用于取消设置
+sudo iptables-save | grep 172.31 # 用于查看
+# 如果用于取消设置
 sudo iptables -D FORWARD -s 172.31.0.0/24 -j DROP
 sudo iptables -D FORWARD -s 172.31.0.0/24 -m conntrack --ctstate ESTABLISHED,RELATED
 ```
@@ -54,6 +54,7 @@ EOF
 
 echo 'docker compose up -d && docker compose logs -f' > restart.sh && chmod +x restart.sh
 docker compose stop && docker compose rm -f && ./restart.sh
+docker exec -it cs1 curl https://bing.com -vv # 验证无法联网
 
 docker inspect cs1 | grep IP # 看看ip
 
