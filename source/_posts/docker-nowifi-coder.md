@@ -63,6 +63,7 @@ curl http://xxx.example.com:8443/  # 加入hosts之后，本地验证
 ```
 
 3. 加入hosts其实就是小trick的前奏，剩下的就是使用代理访问服务了。代理协议比https甚至更加注意隐私。相关的rule如下：
+
 ```
 DOMAIN-SUFFIX,example.com,MYIP_PROXY,extended-matching
 ```
