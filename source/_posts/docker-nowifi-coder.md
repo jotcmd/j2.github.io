@@ -23,7 +23,7 @@ sudo iptables -I FORWARD -s 172.31.0.0/24 -m conntrack --ctstate ESTABLISHED,REL
 
 docker network ls # 用于查看
 sudo iptables-save | grep 172.31 # 用于查看
-# 如果用于取消设置
+# 如果需调试、用于取消设置
 sudo iptables -D FORWARD -s 172.31.0.0/24 -j DROP
 sudo iptables -D FORWARD -s 172.31.0.0/24 -m conntrack --ctstate ESTABLISHED,RELATED
 ```
