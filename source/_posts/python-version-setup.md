@@ -1,5 +1,5 @@
 ---
-title: 使用pyenv方式在debian系安装的指定版本python
+title: 使用pyenv方式在debian系安装指定版本的python
 date: 2024-02-24 11:11:50
 tags:
 ---
