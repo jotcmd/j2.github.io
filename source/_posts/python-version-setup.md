@@ -52,8 +52,6 @@ pyenv install 3.10   # 本质还是本地编译 😂
 pyenv global 3.10.13  # 设置生效
 pyenv versions # 验证生效
 python3 --version
-
-
 ```
 
 - 其他用到的命令
@@ -65,4 +63,5 @@ eval "$(pyenv init --path)"
 pyenv global 3.10.13
 poetry env use 3.10.13
 poetry config virtualenvs.create false
+cat requirements.txt | xargs poetry add
 ```
