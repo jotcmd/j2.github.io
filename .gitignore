@@ -8,3 +8,5 @@ public/
 .deploy*/
 _multiconfig.yml
 *.nosync
+push.sh
+*/.gitkeep
