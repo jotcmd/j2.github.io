@@ -57,6 +57,7 @@ python3 --version
 - 其他用到的命令
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh  # 安装uv
+curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py  # 安装pip
 uv venv
 uv pip install poetry
 eval "$(pyenv init --path)"
