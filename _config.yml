@@ -46,14 +46,14 @@ relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
-  line_number: true
+  line_number: false
   auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
   preprocess: true
-  line_number: true
+  line_number: false
   tab_replace: ''
 
 # Home page setting
@@ -136,7 +136,7 @@ prism_plugin:
   line_number: true 
 
 ## Themes: https://hexo.io/themes/
-theme: typography
+theme: redefine
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
