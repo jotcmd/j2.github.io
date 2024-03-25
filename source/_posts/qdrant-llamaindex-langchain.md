@@ -1,6 +1,6 @@
 ---
 title: 用写入qdrant向量数据库的案例，来快速对比llama_index langchain的api设计
-date: 2024-04-25 21:45:50
+date: 2024-03-25 21:45:50
 tags:
 ---
 
@@ -14,7 +14,7 @@ tags:
 
 ## 先看llama_index
 
-设置openai的env变量
+设置openai的env变量。
 
 ```python
 import os,openai
@@ -31,14 +31,14 @@ import logging,sys
 logging.basicConfig(stream=sys.stdout, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 ```
 
-还是需先初始化原生client
+还是需先初始化原生client。
 
 ```python
 from qdrant_client import QdrantClient
 client = QdrantClient(url="http://xxx:6333", api_key="xxx", timeout=30)
 ```
 
-构造为llama_index体系的对象
+构造为llama_index体系的对象。
 
 ```python
 from llama_index.vector_stores.qdrant import QdrantVectorStore
@@ -48,7 +48,7 @@ from llama_index.core.storage.storage_context import StorageContext
 storage_context = StorageContext.from_defaults(vector_store=vector_store)
 ```
 
-开始构造用于embeddings的对象，text_template是为了让extra_info不参与embeddings
+开始构造用于embeddings的对象，`text_template`是为了让`extra_info`不参与embeddings。
 
 ```python
 from llama_index.core.schema import Document
@@ -57,14 +57,14 @@ json_for_metadata={"a1":"v1","a2":"v2"}
 documents = [Document(text=text_for_embedding,extra_info={"content":text_for_embedding,"metadata":json_for_metadata},text_template='{content}')]
 ```
 
-开始构造索引
+开始构造索引。
 
 ```python
 from llama_index.core.indices.vector_store import VectorStoreIndex
 index = VectorStoreIndex.from_documents(documents, storage_context=storage_context)
 ```
 
-实际写入到qdrant中的对象json
+实际写入到qdrant中的对象json。
 
 ```json
   {
@@ -92,7 +92,7 @@ index = VectorStoreIndex.from_documents(documents, storage_context=storage_conte
 
 跳过一样的openai和logging的设置部分。
 
-langchain这里api涉及不大一样，偏好的是直接loading到向量数据库中
+langchain这里api涉及不大一样，**偏好**的是直接loading到向量数据库中。
 
 ```python
 from langchain.docstore.document import Document
@@ -130,7 +130,7 @@ qdrant = Qdrant.from_documents(
   },
 ```
 
-确实干净很多，但我还是要修正一下page_content的位置，希望和前面llama_index一样
+确实干净很多，但我还是要修正一下page_content的位置，希望和前面llama_index一样。
 
 ```python
 from langchain_community.vectorstores import Qdrant
@@ -170,7 +170,7 @@ llama_index的绕，可能是某种优雅的设计模式吧，但对应理解成
 
 ## 换一种langchain写法
 
-为啥要换一种，因为发现上面有点一波流，但我还要继续不断往后insert，不想每次重新初始化qdrant对象。。
+为啥要换一种呢，因为发现上面写法有点**一波流**了，实际我还要继续不断insert其他更多新产生内容，不想每次重新初始化一个qdrant对象。。
 
 然而找了一会、也没找到合适的办法。
 
@@ -185,7 +185,7 @@ from langchain_openai import OpenAIEmbeddings
 qdrant = Qdrant(client, "xxx", OpenAIEmbeddings(),content_payload_key="content")
 ```
 
-然后、查阅源码、试了几试成功了，是这么写入文档的。
+然后，查阅源码、试了几试成功了，是这么写入文档的。
 
 ```
 qdrant.add_documents(
