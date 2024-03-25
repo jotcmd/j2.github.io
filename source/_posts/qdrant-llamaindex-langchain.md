@@ -1,5 +1,5 @@
 ---
-title: 用写入qdrant向量数据库，来快速对比llama_index langchain
+title: 用写入qdrant向量数据库的案例，来快速对比llama_index langchain的api设计
 date: 2024-04-25 21:45:50
 tags:
 ---
