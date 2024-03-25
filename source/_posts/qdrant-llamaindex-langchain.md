@@ -85,10 +85,10 @@ index = VectorStoreIndex.from_documents(documents, storage_context=storage_conte
   },
 ```
 
-一大坨_node_content可能是为了后面能反序列化回来，但真的有点多。。
+一大坨`_node_content`可能是为了后面能反序列化回来，但真的有点多。。
 
 
-## 先看langchain
+## 再来看langchain
 
 跳过一样的openai和logging的设置部分。
 
@@ -148,13 +148,15 @@ qdrant = Qdrant.from_documents(
 )
 ```
 
-搞定！感觉脡不错的，直接高效没那么绕了。
-llama_index的绕，可能是某种优雅的设计模式，但对应理解成本也高。
+搞定！感觉脡不错的，高效、直接，没那么绕了。
+llama_index的绕，可能是某种优雅的设计模式吧，但对应理解成本也高。
 
 
 ## 换一种langchain写法
 
-为啥要换一种，因为发现上面是一波流，后面没找到qdrant合适的继续insert doc的办法。
+为啥要换一种，因为发现上面有点一波流，但我还要继续不断往后insert，不想每次重新初始化qdrant对象。。
+
+然而找了一会、也没找到合适的办法。
 
 看了源码，刚好有个类似llama_index的、基于原生client的方法。
 
@@ -167,7 +169,7 @@ from langchain_openai import OpenAIEmbeddings
 qdrant = Qdrant(client, "xxx", OpenAIEmbeddings(),content_payload_key="content")
 ```
 
-然后这么写入文档
+然后、查阅源码、试了几试成功了，是这么写入文档的。
 
 ```
 qdrant.add_documents(
@@ -176,7 +178,8 @@ qdrant.add_documents(
 ```
 
 很简洁，点赞langchain。
-最后的格式也是干净如预期的。
+
+最后向量库中实际存储的内容、也是干净如预期的。
 
 ```json
   {
@@ -191,8 +194,10 @@ qdrant.add_documents(
   },
 ```
 
-回过头来，可能前面的写法，用`qdrant.add_documents`也能同样解决诉求问题。
+回过头来，可能前面第一种的写法，用`qdrant.add_documents`也能同样解决诉求问题。
 
-试了试，确实。
+马上试了试，确实如此。
 
 但理解上，还是第二种方式合适我。
+
+以上。
