@@ -28,7 +28,7 @@ openai.api_base = os.environ["OPENAI_API_BASE"]
 
 ```python
 import logging,sys
-logging.basicConfig(stream=sys.stdout, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+logging.basicConfig(stream=sys.stdout, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 ```
 
 还是需先初始化原生client
