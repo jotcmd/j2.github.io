@@ -148,7 +148,23 @@ qdrant = Qdrant.from_documents(
 )
 ```
 
-搞定！感觉脡不错的，高效、直接，没那么绕了。
+搞定！
+
+```json
+  {
+    "id": "da83e0f9-7753-4576-be57-d52b25a90d88",
+    "payload": {
+      "content": "这是一个示例文档的内容。它包含了一些文本。",
+      "metadata": {
+        "author": "John Doe",
+        "source": "example"
+      }
+    },
+    "vector": null
+  }
+```
+
+感觉脡不错的，高效、直接，没那么绕了。
 llama_index的绕，可能是某种优雅的设计模式吧，但对应理解成本也高。
 
 
