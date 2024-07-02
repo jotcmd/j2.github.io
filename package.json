@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@waline/client": "3",
-    "hexo": "^7.0.0",
+    "hexo": "^7.3.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category-enhance": "^0.1.6",
     "hexo-generator-feed": "^3.0.0",
